@@ -17,6 +17,7 @@
 package com.hari.kotlinflowsandcoroutines.ui.search
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -50,10 +51,19 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, null, false)
-        searchView = (activity as MainActivity).findViewById(R.id.search_view)
+        setUpSearchView()
         mBinding.lifecycleOwner = viewLifecycleOwner
         mBinding.viewModel = viewModel
         return mBinding.root
+    }
+
+    private fun setUpSearchView() {
+        searchView = (activity as MainActivity).findViewById(R.id.search_view)
+        searchView.showSearch(false)
+        Handler().postDelayed({
+            searchView.setQuery("Android", true)
+        }, 500)
+
     }
 
 
@@ -94,6 +104,7 @@ class SearchFragment : Fragment() {
         inflater.inflate(R.menu.search_menu, menu)
         val item = menu.findItem(R.id.action_search)
         searchView.setMenuItem(item)
+
     }
 
 
