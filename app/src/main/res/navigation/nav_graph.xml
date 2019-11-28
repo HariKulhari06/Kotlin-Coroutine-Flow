@@ -3,30 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/dashboardFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.hari.kotlinflowsandcoroutines.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/dashboardFragment"
+        android:name="com.hari.kotlinflowsandcoroutines.ui.DashboardFragment"
+        android:label="@string/dashboard_fragment_label"
+        tools:layout="@layout/fragment_dashboard">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_dashboardFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.hari.kotlinflowsandcoroutines.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/searchFragment"
+        android:name="com.hari.kotlinflowsandcoroutines.ui.search.SearchFragment"
+        android:label="@string/label_search_repo"
+        tools:layout="@layout/fragment_search" />
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
-    </fragment>
 </navigation>
