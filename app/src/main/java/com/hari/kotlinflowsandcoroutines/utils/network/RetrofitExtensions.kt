@@ -29,7 +29,7 @@ inline fun <reified T> Retrofit.create(): T = create(T::class.java)
  * and data to the UI.
  */
 fun <ResultType> Response<ResultType>.toResource(): Resource<ResultType> {
-    val error = errorBody()?.toString() ?: message()
+    val error = errorBody()?.byteString().toString()
     return when {
         isSuccessful -> {
             val body = body()
