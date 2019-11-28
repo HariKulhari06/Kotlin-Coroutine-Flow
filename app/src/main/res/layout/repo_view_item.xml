@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="repo"
+            type="com.hari.kotlinflowsandcoroutines.vo.Repository" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginBottom="5dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{repo.name}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                tools:text="Android-SearchView-Example" />
+
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{repo.description}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+                tools:text="Example of using SearchView. Bonus - API service with Retrofit2 + rxJava2 + GitHub API" />
+
+            <TextView
+                android:id="@+id/textViewOwnerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_user"
+                android:drawableLeft="@drawable/ic_user"
+                android:drawableTint="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:text="@{repo.owner.login}"
+                app:layout_constraintEnd_toStartOf="@+id/textViewStarCount"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
+                tools:text="Hari" />
+
+            <TextView
+                android:id="@+id/textViewStarCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_stars"
+                android:drawableLeft="@drawable/ic_stars"
+                android:drawableTint="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:text="@{String.valueOf(repo.stargazersCount)}"
+                app:layout_constraintEnd_toStartOf="@+id/textViewForkCount"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textViewOwnerName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
+                tools:text="121" />
+
+            <TextView
+                android:id="@+id/textViewForkCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_branch"
+                android:drawableLeft="@drawable/ic_branch"
+                android:drawableTint="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:text="@{String.valueOf(repo.forksCount)}"
+                app:layout_constraintEnd_toStartOf="@+id/textViewForkLng"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textViewStarCount"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
+                tools:text="Hari" />
+
+            <TextView
+                android:id="@+id/textViewForkLng"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_language"
+                android:drawableLeft="@drawable/ic_language"
+                android:drawableTint="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:text="@{repo.language}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textViewForkCount"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
+                tools:text="Hari" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:text="@{repo.htmlUrl}"
+                android:textColor="@android:color/holo_blue_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/textViewForkLng"
+                tools:text="sk gjsj 'gdk" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
