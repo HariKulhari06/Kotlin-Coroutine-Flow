@@ -27,7 +27,7 @@ Kotlin Flows and Coroutines
 <img src="art/device-2019-11-28-173356.png" height="400" alt="Screenshot" gravity="center"/> 
 </p>
 
-### Screenshots
+### Tables of methods
 - <b>Debounce:</b>  Here, the debounce operator is used with a time constant. The debounce operator handles the case when the user types “a”, “ab”, “abc”, in a very short time. So there will be too much network calls. But the user is finally interested in the result of the search “abc”. So, you must discard the results of “a” and “ab”. Ideally, there should be no network calls for “a” and “ab” as the user typed those in very short time. So, the debounce operator comes to the rescue. The debounce will wait for the provided time for doing anything, if any other search query comes in between that time, it will ignore the previous item and start waiting for that time again with the new search query. If nothing new comes in that given constant time, it will proceed with that search query for further processing. So, debounce only emit an item from an Observable if a particular timespan has passed without it emitting an another item.
 
 - <b>Filter:</b> The filter operator is used to filter the unwanted string like empty string in this case to avoid the unnecessary network call.
